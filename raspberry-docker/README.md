@@ -44,3 +44,18 @@ docker compose -f docker-compose.example.yml up -d   # Webserver auf Port 8080
 - **Sicherheit:** Mitglieder der Gruppe `docker` haben praktisch Root-Rechte.
 - Images müssen für ARM gebaut sein (`arm64`/`arm/v7`) – die meisten offiziellen Images sind das.
 - Optional grafische Oberfläche: [Portainer](https://docs.portainer.io/).
+
+## Home Assistant installieren
+```bash
+mkdir -p ~/homeassistant && cd ~/homeassistant
+# docker-compose.yml aus raspberry-docker/homeassistant/ hierher kopieren
+docker compose up -d
+docker logs -f homeassistant     # Start beobachten (Strg+C beendet nur die Anzeige)
+```
+Danach im Browser `http://<IP-des-Pi>:8123` öffnen und ein Konto anlegen.
+Der erste Start kann einige Minuten dauern.
+
+Update:
+```bash
+cd ~/homeassistant && docker compose pull && docker compose up -d
+```
