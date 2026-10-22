@@ -1,0 +1,10 @@
+# Beispiel: kleiner Webserver als Test.
+# Starten:  docker compose -f docker-compose.example.yml up -d
+# Aufrufen: http://<IP-des-Pi>:8080
+# Stoppen:  docker compose -f docker-compose.example.yml down
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    restart: unless-stopped
